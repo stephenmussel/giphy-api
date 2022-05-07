@@ -1,7 +1,20 @@
 import React from 'react';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function App() {
+
+  const fetchRandom = () => {
+    console.log('in fetchRandom');
+    
+  };
+
+  useEffect(() => {
+    fetchRandom();
+  }, [])
+
+
   // Renders the entire app on the DOM
   return (
     <div>

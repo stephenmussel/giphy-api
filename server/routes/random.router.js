@@ -1,8 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const { default: axios } = require('axios');
 
 router.get('/', (req, res) => {
-    res.send('Hello World'); // Replace this
+    axios.get(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY_API_KEY}&limit=1&rating=pg`)
+        .then(response => {
+            res.send(response.data);
+        })
+        .catch(err => {
+            console.log('err in fetching from giphy API: ', err);
+            res.sendStatus(500);
+            
+        })
 })
 
 module.exports = router;

@@ -9,7 +9,10 @@ function App() {
 
   const dispatch = useDispatch();
   const random = useSelector(store => store.random);
-  const [search, setSearch] =useState('');
+  const search = useSelector(store => store.search);
+
+  const [newSearch, setNewSearch] =useState('');
+  const [results, setResults] = useState([]);
 
   const fetchRandom = () => {
     console.log('in fetchRandom');
@@ -23,20 +26,23 @@ function App() {
       })
   };
 
-  useEffect(() => {
-    fetchRandom();
-  }, [])
+  // useEffect(() => {
+  //   fetchRandom();
+  // }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('clicked submit');
 
-    axios.post('/search', {search: search})
+    axios.post('/search', {search: newSearch})
       .then(response => {
-        console.log('response:', response.data.data[0].url);
-
-        const action = {type: 'SET_SEARCH', payload: response.data.data};
-        dispatch(action);
+        console.log('response.data:', response.data);
+        console.log('response.data...:', response.data[0].images.original.url);
+        console.log('search: ', newSearch);
+        
+        // const action = {type: 'SET_SEARCH', payload: response.data};
+        // dispatch(action);
+        setResults(response.data);
         
       }).catch(err => {
         console.log(err);
@@ -50,17 +56,26 @@ function App() {
       <header className="App-header">
         <h1>Random Giphy API</h1>
       </header>
-  
-      {/* {JSON.stringify(random)} */}
-      <img src={random} alt="random gif"/>
       <br />
-      <button onClick={fetchRandom} style={{ marginTop: 5, marginBottom: 5 }}>Refresh</button>
+      {/* {JSON.stringify(random)} */}
+      {/* <img src={random} alt="random gif"/>
+      <br />
+      <button onClick={fetchRandom} style={{ marginTop: 5, marginBottom: 5 }}>Refresh</button> */}
       <form onSubmit={handleSubmit}>
-        <input placeholder="search" style={{ marginRight: 5 }}/>
+        <input 
+          placeholder="search"
+          onChange={(event) => setNewSearch(event.target.value)}
+          style={{ marginRight: 5 }}
+        />
         <input placeholder="rating" style={{ marginRight: 5 }}/>
         <input placeholder="limit" style={{ marginRight: 5 }}/>
         <input type="submit" value="submit"/>
       </form>
+      {/* {JSON.stringify(results)} */}
+      {results.map((gif, i) => (
+        <img key={i} src={gif.images.original.url}/>
+      ))}
+      
     </div>
   );
 }

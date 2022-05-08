@@ -7,6 +7,7 @@ import axios from 'axios';
 function App() {
 
   const dispatch = useDispatch();
+  const random = useSelector(store => store.random);
 
   const fetchRandom = () => {
     console.log('in fetchRandom');
@@ -31,8 +32,9 @@ function App() {
       <header className="App-header">
         <h1>Random Giphy API</h1>
       </header>
-      
-      <p>Results go here</p>
+  
+      {/* {JSON.stringify(random)} */}
+      <img src={random} alt="random gif"/>
     </div>
   );
 }

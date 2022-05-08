@@ -25,6 +25,12 @@ function App() {
     fetchRandom();
   }, [])
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('clicked submit');
+    
+  }
+
 
   // Renders the entire app on the DOM
   return (
@@ -36,7 +42,13 @@ function App() {
       {/* {JSON.stringify(random)} */}
       <img src={random} alt="random gif"/>
       <br />
-      <button onClick={fetchRandom} style={{ marginTop: 5 }}>Refresh</button>
+      <button onClick={fetchRandom} style={{ marginTop: 5, marginBottom: 5 }}>Refresh</button>
+      <form onClick={handleSubmit}>
+        <input placeholder="search" style={{ marginRight: 5 }}/>
+        <input placeholder="rating" style={{ marginRight: 5 }}/>
+        <input placeholder="limit" style={{ marginRight: 5 }}/>
+        <input type="submit" value="submit"/>
+      </form>
     </div>
   );
 }

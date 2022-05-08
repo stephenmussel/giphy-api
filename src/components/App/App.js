@@ -8,13 +8,17 @@ import { useState }  from 'react';
 function App() {
 
   const dispatch = useDispatch();
-  const random = useSelector(store => store.random);
-  const search = useSelector(store => store.search);
+
+  /* store for displaying random gif
+  const random = useSelector(store => store.random); 
+    */
 
   const [newSearch, setNewSearch] = useState('');
   const [limit, setLimit] = useState('');
   const [rating, setRating] = useState('');
   const [results, setResults] = useState([]);
+
+  /* for displaying randmon gif
 
   const fetchRandom = () => {
     console.log('in fetchRandom');
@@ -28,9 +32,10 @@ function App() {
       })
   };
 
-  // useEffect(() => {
-  //   fetchRandom();
-  // }, [])
+  useEffect(() => {
+    fetchRandom();
+  }, [])
+  */
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,10 +48,9 @@ function App() {
         console.log('search: ', newSearch);
         console.log(`newSearch: ${newSearch}, rating: ${rating}, and limit: ${limit}`);
         
-        
-        // const action = {type: 'SET_SEARCH', payload: response.data};
-        // dispatch(action);
         setResults(response.data);
+
+        // clears inputs
         setNewSearch('');
         setRating('');
         setLimit('');
@@ -61,7 +65,8 @@ function App() {
   return (
     <div>
       <header className="App-header">
-        <h1>Random Giphy API</h1>
+        {/* <h1>Random Giphy API</h1> */}
+        <h1>Giphy API</h1>
       </header>
       <br />
       {/* {JSON.stringify(random)} */}
@@ -90,7 +95,6 @@ function App() {
         />
         <input type="submit" value="submit"/>
       </form>
-      {/* {JSON.stringify(results)} */}
       {results.map((gif, i) => (
         <img key={i} src={gif.images.original.url}/>
       ))}

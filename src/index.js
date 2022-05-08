@@ -16,18 +16,10 @@ const random = (state = {}, action) => {
     return state;
 }
 
-const search = (state = {}, action) => {
-    if(action.type === 'SET_SEARCH') {
-        return action.payload;
-    }
-    return state;
-}
-
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         random,
-        search,
     }),
     applyMiddleware(logger),
 );

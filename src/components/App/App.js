@@ -5,21 +5,16 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useState }  from 'react';
 import Search from '../Search/Search';
+import Random from '../Random/Random';
 
 function App() {
 
   const dispatch = useDispatch();
 
-  /* store for displaying random gif
-  const random = useSelector(store => store.random); 
-    */
-
   const [newSearch, setNewSearch] = useState('');
   const [limit, setLimit] = useState('');
   const [rating, setRating] = useState('');
   const [results, setResults] = useState([]);
-
-  /* for displaying randmon gif
 
   const fetchRandom = () => {
     console.log('in fetchRandom');
@@ -33,10 +28,10 @@ function App() {
       })
   };
 
-  useEffect(() => {
-    fetchRandom();
-  }, [])
-  */
+  // useEffect(() => {
+  //   fetchRandom();
+  // }, [])
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,19 +56,16 @@ function App() {
       });
   };
 
-
   // Renders the entire app on the DOM
   return (
     <div>
       <header className="App-header">
-        {/* <h1>Random Giphy API</h1> */}
         <h1>Giphy API</h1>
+        {/* do you feel luck? i make my own luck... */}
       </header>
-      <br />
-      {/* {JSON.stringify(random)} */}
-      {/* <img src={random} alt="random gif"/>
-      <br />
-      <button onClick={fetchRandom} style={{ marginTop: 5, marginBottom: 5 }}>Refresh</button> */}
+      <Random
+        fetchRandom={fetchRandom}
+      />
       <Search 
         handleSubmit={handleSubmit}
         newSearch={newSearch}

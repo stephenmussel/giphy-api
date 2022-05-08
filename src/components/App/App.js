@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useState }  from 'react';
+import Search from '../Search/Search';
 
 function App() {
 
@@ -73,31 +74,16 @@ function App() {
       {/* <img src={random} alt="random gif"/>
       <br />
       <button onClick={fetchRandom} style={{ marginTop: 5, marginBottom: 5 }}>Refresh</button> */}
-      <form onSubmit={handleSubmit}>
-        <input 
-          placeholder="search"
-          onChange={(event) => setNewSearch(event.target.value)}
-          value={newSearch}
-          style={{ marginRight: 5 }}
-        />
-        <input 
-          placeholder="rating"
-          onChange={(event) => setRating(event.target.value)}
-          value={rating}
-          style={{ marginRight: 5 }}
-        />
-        <input 
-          placeholder="limit" 
-          type="number"
-          onChange={(event) => setLimit(event.target.value)}
-          value={limit}
-          style={{ marginRight: 5 }}
-        />
-        <input type="submit" value="submit"/>
-      </form>
-      {results.map((gif, i) => (
-        <img key={i} src={gif.images.original.url}/>
-      ))}
+      <Search 
+        handleSubmit={handleSubmit}
+        newSearch={newSearch}
+        setNewSearch={setNewSearch}
+        rating={rating}
+        setRating={setRating}
+        limit={limit}
+        setLimit={setLimit}
+        results={results}
+      />
       
     </div>
   );

@@ -1,34 +1,35 @@
-import { useState }  from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import SearchItem from "../SearchItem/SearchItem";
 
 function Search() {
+
     const [newSearch, setNewSearch] = useState('');
     const [limit, setLimit] = useState('');
     const [rating, setRating] = useState('');
     const [results, setResults] = useState([]);
-  
+
     const handleSubmit = (event) => {
-      event.preventDefault();
-      console.log('clicked submit');
-  
-      axios.post('/search', {search: newSearch, rating: rating, limit: limit})
-        .then(response => {
-          console.log('response.data:', response.data);
-          console.log('response.data...:', response.data[0].images.original.url);
-          console.log('search: ', newSearch);
-          console.log(`newSearch: ${newSearch}, rating: ${rating}, and limit: ${limit}`);
-          
-          setResults(response.data);
-  
-          // clears inputs
-          setNewSearch('');
-          setRating('');
-          setLimit('');
-          
-        }).catch(err => {
-          console.log(err);
-        });
+        event.preventDefault();
+        console.log('clicked submit');
+
+        axios.post('/search', { search: newSearch, rating: rating, limit: limit })
+            .then(response => {
+                console.log('response.data:', response.data);
+                console.log('response.data...:', response.data[0].images.original.url);
+                console.log('search: ', newSearch);
+                console.log(`newSearch: ${newSearch}, rating: ${rating}, and limit: ${limit}`);
+
+                setResults(response.data);
+
+                // clears inputs
+                setNewSearch('');
+                setRating('');
+                setLimit('');
+
+            }).catch(err => {
+                console.log(err);
+            });
     };
 
     return (

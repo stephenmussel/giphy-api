@@ -98,8 +98,8 @@ How does someone use this application? Tell a user story here.
     - [ ] /random
     - [ ] /search 
 - [ ] Create client-side routes
-    - [ ] /random
-    - [ ] /search 
+    - [x] /random
+    - [x] /search 
 - [ ] Style with Material-UI  
 - [ ] Style with Material-UI
 - [ ] Update readme

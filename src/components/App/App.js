@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
 import Search from '../Search/Search';
 import Random from '../Random/Random';
 import Header from '../Header/Header';
@@ -13,8 +12,8 @@ function App() {
     <div>
       <Header />
       <Router>
-        <Route exact path="/" component={Random}/>
-        <Route exact path="/search" component={Search}/>
+        <Route exact path="/" component={Random} />
+        <Route exact path="/search" component={Search} />
       </Router>
     </div>
   );

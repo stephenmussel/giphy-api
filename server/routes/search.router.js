@@ -9,7 +9,6 @@ router.post('/', (req, res) => {
     const limitParam = req.body.limit;
     console.log('limitParam: ', limitParam);
     
-    
     axios.get(`https://api.giphy.com/v1/gifs/search?api_key=fO8fbc5HkewBdAG3j9oSfIdDDw51gBrc&q=${searchParam}&limit=${limitParam}&offset=0&rating=pg-13&lang=en`)
         .then(response => {
             console.log(response.data.data);

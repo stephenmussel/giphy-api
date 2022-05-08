@@ -13,6 +13,7 @@ function App() {
 
   const [newSearch, setNewSearch] = useState('');
   const [limit, setLimit] = useState('');
+  const [rating, setRating] = useState('');
   const [results, setResults] = useState([]);
 
   const fetchRandom = () => {
@@ -35,18 +36,19 @@ function App() {
     event.preventDefault();
     console.log('clicked submit');
 
-    axios.post('/search', {search: newSearch, limit: limit})
+    axios.post('/search', {search: newSearch, rating: rating, limit: limit})
       .then(response => {
         console.log('response.data:', response.data);
         console.log('response.data...:', response.data[0].images.original.url);
         console.log('search: ', newSearch);
-        console.log(`newSearch: ${newSearch} and limit: ${limit}`);
+        console.log(`newSearch: ${newSearch}, rating: ${rating}, and limit: ${limit}`);
         
         
         // const action = {type: 'SET_SEARCH', payload: response.data};
         // dispatch(action);
         setResults(response.data);
         setNewSearch('');
+        setRating('');
         setLimit('');
         
       }).catch(err => {
@@ -73,7 +75,12 @@ function App() {
           value={newSearch}
           style={{ marginRight: 5 }}
         />
-        <input placeholder="rating" style={{ marginRight: 5 }}/>
+        <input 
+          placeholder="rating"
+          onChange={(event) => setRating(event.target.value)}
+          value={rating}
+          style={{ marginRight: 5 }}
+        />
         <input 
           placeholder="limit" 
           type="number"

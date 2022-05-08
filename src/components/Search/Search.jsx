@@ -1,3 +1,5 @@
+import SearchItem from "../SearchItem/SearchItem";
+
 function Search({ 
     handleSubmit, 
     newSearch, 
@@ -8,7 +10,6 @@ function Search({
     setRating,
     setLimit
 }) 
-
 
 {
     return (
@@ -36,7 +37,10 @@ function Search({
                 <input type="submit" value="submit" />
             </form>
             {results.map((gif, i) => (
-                <img key={i} src={gif.images.original.url} />
+                <SearchItem
+                    gif={gif}
+                    key={i}
+                />
             ))}
         </>
     )

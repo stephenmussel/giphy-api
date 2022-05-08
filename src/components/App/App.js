@@ -3,11 +3,13 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { useState }  from 'react';
 
 function App() {
 
   const dispatch = useDispatch();
   const random = useSelector(store => store.random);
+  const [search, setSearch] =useState('');
 
   const fetchRandom = () => {
     console.log('in fetchRandom');
@@ -28,8 +30,18 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('clicked submit');
-    
-  }
+
+    axios.post('/search', {search: search})
+      .then(response => {
+        console.log('response:', response.data.data[0].url);
+
+        const action = {type: 'SET_SEARCH', payload: response.data.data};
+        dispatch(action);
+        
+      }).catch(err => {
+        console.log(err);
+      });
+  };
 
 
   // Renders the entire app on the DOM
@@ -43,7 +55,7 @@ function App() {
       <img src={random} alt="random gif"/>
       <br />
       <button onClick={fetchRandom} style={{ marginTop: 5, marginBottom: 5 }}>Refresh</button>
-      <form onClick={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input placeholder="search" style={{ marginRight: 5 }}/>
         <input placeholder="rating" style={{ marginRight: 5 }}/>
         <input placeholder="limit" style={{ marginRight: 5 }}/>

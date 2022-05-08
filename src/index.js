@@ -27,6 +27,7 @@ const search = (state = {}, action) => {
 const storeInstance = createStore(
     combineReducers({
         random,
+        search,
     }),
     applyMiddleware(logger),
 );

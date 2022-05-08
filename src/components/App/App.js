@@ -7,6 +7,7 @@ import { useState }  from 'react';
 import Search from '../Search/Search';
 import Random from '../Random/Random';
 import Header from '../Header/Header';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 function App() {
 
@@ -16,23 +17,6 @@ function App() {
   const [limit, setLimit] = useState('');
   const [rating, setRating] = useState('');
   const [results, setResults] = useState([]);
-
-  const fetchRandom = () => {
-    console.log('in fetchRandom');
-
-    axios.get('/random')
-      .then(response => {
-        console.log(response.data.data.images.downsized_medium.url);
-        
-        const action = {type: 'SET_RANDOM', payload: response.data.data.images.downsized_medium.url};
-        dispatch(action);
-      })
-  };
-
-  // useEffect(() => {
-  //   fetchRandom();
-  // }, [])
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,10 +45,14 @@ function App() {
   return (
     <div>
       <Header />
-      <Random
+      <Router>
+        <Route exact path="/" component={Random}/>
+        {/* <Route exact path="/" component={Search}/> */}
+      </Router>
+      {/* <Random
         fetchRandom={fetchRandom}
-      />
-      <Search 
+      />*/}
+      {/* <Search 
         handleSubmit={handleSubmit}
         newSearch={newSearch}
         setNewSearch={setNewSearch}
@@ -73,7 +61,7 @@ function App() {
         limit={limit}
         setLimit={setLimit}
         results={results}
-      />
+      />  */}
       
     </div>
   );

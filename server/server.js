@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5000;
 const randomRouter = require('./routes/random.router');
+const searchRouter = require('./routes/search.router');
 
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.urlencoded({extended: true}));
@@ -12,6 +13,7 @@ app.use(express.static('build'));
 
 /** ---------- ROUTES ---------- **/
 app.use('/random', randomRouter);
+app.use('/search', searchRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {

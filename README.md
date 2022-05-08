@@ -101,7 +101,7 @@ How does someone use this application? Tell a user story here.
     - [x] /random
     - [x] /search 
 - [ ] Style with Material-UI  
-- [ ] Style with Material-UI
+- [ ] Add sticky footer
 - [ ] Update readme
 
 

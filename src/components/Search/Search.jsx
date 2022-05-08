@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import SearchItem from "../SearchItem/SearchItem";
+import { useHistory } from 'react-router-dom';
 
 function Search() {
 
@@ -8,6 +9,8 @@ function Search() {
     const [limit, setLimit] = useState('');
     const [rating, setRating] = useState('');
     const [results, setResults] = useState([]);
+
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -31,6 +34,11 @@ function Search() {
                 console.log(err);
             });
     };
+
+    const home = () => {
+        console.log('clicked home');
+        history.push('/');
+    }
 
     return (
         <>
@@ -56,12 +64,16 @@ function Search() {
                 />
                 <input type="submit" value="submit" />
             </form>
+            <br />
+            <button onClick={home}>Home</button>
+            <div className="search-results">
             {results.map((gif, i) => (
                 <SearchItem
                     gif={gif}
                     key={i}
                 />
             ))}
+            </div>
         </>
     )
 }

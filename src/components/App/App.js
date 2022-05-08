@@ -35,6 +35,8 @@ function App() {
   
       {/* {JSON.stringify(random)} */}
       <img src={random} alt="random gif"/>
+      <br />
+      <button onClick={fetchRandom} style={{ marginTop: 5 }}>Refresh</button>
     </div>
   );
 }

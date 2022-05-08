@@ -93,7 +93,17 @@ How does someone use this application? Tell a user story here.
 <!-- Updates -->
 ## Updates
 
-- [ ] ...  
+- [x] Move header to component
+- [ ] Create views
+    - [ ] /random
+    - [ ] /search 
+- [ ] Create client-side routes
+    - [ ] /random
+    - [ ] /search 
+- [ ] Style with Material-UI  
+- [ ] Style with Material-UI
+- [ ] Update readme
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

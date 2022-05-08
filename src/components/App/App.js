@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useState }  from 'react';
 import Search from '../Search/Search';
 import Random from '../Random/Random';
+import Header from '../Header/Header';
 
 function App() {
 
@@ -59,10 +60,7 @@ function App() {
   // Renders the entire app on the DOM
   return (
     <div>
-      <header className="App-header">
-        <h1>Giphy API</h1>
-        {/* do you feel luck? i make my own luck... */}
-      </header>
+      <Header />
       <Random
         fetchRandom={fetchRandom}
       />

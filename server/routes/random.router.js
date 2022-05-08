@@ -3,7 +3,7 @@ const router = express.Router();
 const { default: axios } = require('axios');
 
 router.get('/', (req, res) => {
-    axios.get(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY_API_KEY}&limit=1&rating=pg`)
+    axios.get(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY_API_KEY}&tag=fuzzy+mammal&rating=pg-13`)
         .then(response => {
             res.send(response.data);
         })

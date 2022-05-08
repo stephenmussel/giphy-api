@@ -11,7 +11,8 @@ function App() {
   const random = useSelector(store => store.random);
   const search = useSelector(store => store.search);
 
-  const [newSearch, setNewSearch] =useState('');
+  const [newSearch, setNewSearch] = useState('');
+  const [limit, setLimit] = useState('');
   const [results, setResults] = useState([]);
 
   const fetchRandom = () => {
@@ -34,15 +35,19 @@ function App() {
     event.preventDefault();
     console.log('clicked submit');
 
-    axios.post('/search', {search: newSearch})
+    axios.post('/search', {search: newSearch, limit: limit})
       .then(response => {
         console.log('response.data:', response.data);
         console.log('response.data...:', response.data[0].images.original.url);
         console.log('search: ', newSearch);
+        console.log(`newSearch: ${newSearch} and limit: ${limit}`);
+        
         
         // const action = {type: 'SET_SEARCH', payload: response.data};
         // dispatch(action);
         setResults(response.data);
+        setNewSearch('');
+        setLimit('');
         
       }).catch(err => {
         console.log(err);
@@ -65,10 +70,17 @@ function App() {
         <input 
           placeholder="search"
           onChange={(event) => setNewSearch(event.target.value)}
+          value={newSearch}
           style={{ marginRight: 5 }}
         />
         <input placeholder="rating" style={{ marginRight: 5 }}/>
-        <input placeholder="limit" style={{ marginRight: 5 }}/>
+        <input 
+          placeholder="limit" 
+          type="number"
+          onChange={(event) => setLimit(event.target.value)}
+          value={limit}
+          style={{ marginRight: 5 }}
+        />
         <input type="submit" value="submit"/>
       </form>
       {/* {JSON.stringify(results)} */}

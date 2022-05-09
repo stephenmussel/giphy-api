@@ -55,8 +55,6 @@ Suspendisse euismod volutpat aliquet. Maecenas vulputate mauris in pellentesque 
 <!-- Prerequisites -->
 ### Prerequisites
 
-Link to software that is required to install the app (e.g. node).
-
 - [Node.js](https://nodejs.org/en/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -92,14 +90,7 @@ How does someone use this application? Tell a user story here.
 
 <!-- Updates -->
 ## Updates
-
-- [x] Move header to component
-- [ ] Create views
-    - [ ] /random
-    - [ ] /search 
-- [ ] Create client-side routes
-    - [x] /random
-    - [x] /search 
+ 
 - [ ] Style with Material-UI  
 - [ ] Add sticky footer
 - [ ] Update readme

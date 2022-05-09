@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import './Random.css';
 
 function Random() {
 
@@ -31,17 +32,22 @@ function Random() {
     }
 
     return (
-        <>
-            <img src={random} alt="random gif" />
-            <br />
-            <button
-                onClick={fetchRandom}
-                style={{ marginTop: 5, marginRight: 5, marginBottom: 5 }}
-            >
-                Refresh
-            </button>
-            <button onClick={home}>Home</button>
-        </>
+        <div className="random-container">
+            <div className="random-gif">
+                <img src={random} alt="random gif" />
+            </div>
+            <div className="refresh-button">
+                <button
+                    onClick={fetchRandom}
+                    style={{ marginTop: 5, marginRight: 5, marginBottom: 5 }}
+                >
+                    Refresh
+                </button>
+            </div>
+            <div className="home-button">
+                <button onClick={home}>Home</button>
+            </div>
+        </div>
     )
 }
 

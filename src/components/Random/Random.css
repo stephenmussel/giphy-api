@@ -1,0 +1,7 @@
+.random-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    margin-top: 5%;
+
+}

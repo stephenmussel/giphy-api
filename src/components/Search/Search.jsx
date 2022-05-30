@@ -49,12 +49,21 @@ function Search() {
                     value={newSearch}
                     style={{ marginRight: 5 }}
                 />
-                <input
+                {/* <input
                     placeholder="rating"
                     onChange={(event) => setRating(event.target.value)}
                     value={rating}
                     style={{ marginRight: 5 }}
-                />
+                /> */}
+                <select 
+                    onChange={(event) => setRating(event.target.value)}
+                    style={{ marginRight: 5 }}
+                >
+                    <option value="g">G</option>
+                    <option value="pg">PG</option>
+                    <option value="pg-13">PG-13</option>
+                    <option value="r">R</option>
+                </select>
                 <input
                     placeholder="limit"
                     type="number"

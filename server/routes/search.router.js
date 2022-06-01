@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
     const ratingParam = req.body.rating;
     console.log('ratingParam: ', ratingParam);
     
-    axios.get(`https://api.giphy.com/v1/gifs/search?api_key=fO8fbc5HkewBdAG3j9oSfIdDDw51gBrc&q=${searchParam}&limit=${limitParam}&offset=0&rating=${ratingParam}-13&lang=en`)
+    axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${searchParam}&limit=${limitParam}&offset=0&rating=${ratingParam}-13&lang=en`)
         .then(response => {
             console.log(response.data.data);
             res.send(response.data.data);
